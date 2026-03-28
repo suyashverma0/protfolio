@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suyash Verma | Data Scientist</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg: #050508;
+            --surface: #0f0f1a;
+            --border: #222233;
+            --accent: #6c63ff;
+            --accent-dim: rgba(108, 99, 255, 0.15);
+            --text-main: #f0f0f5;
+            --text-muted: #a0a0b8;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 1000;
+            background: rgba(5, 5, 8, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 180px 0 100px;
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-text { flex: 1.2; }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(108, 99, 255, 0.3);
+        }
+
+        .hero-text h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 550px;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-img {
+            flex: 0.8;
+            position: relative;
+        }
+
+        .img-card {
+            width: 100%;
+            aspect-ratio: 4/5;
+            background: var(--surface);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+
+        /* --- Sections --- */
+        section { padding: 100px 0; }
+
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title span { color: var(--accent); }
+
+        /* --- Skills --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--surface);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 { margin-bottom: 1rem; font-size: 1.1rem; color: var(--accent); }
+        
+        .skill-list {
+            list-style: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .skill-list li { margin-bottom: 0.5rem; }
+
+        /* --- Projects --- */
+        .project-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.4s;
+        }
+
+        .project-card:hover { background: rgba(108, 99, 255, 0.05); }
+
+        .project-info h3 { font-family: 'Syne', sans-serif; font-size: 1.8rem; margin-bottom: 0.5rem; }
+        
+        .project-tags { display: flex; gap: 0.8rem; margin-top: 1rem; }
+        
+        .tag {
+            font-size: 0.75rem;
+            background: var(--border);
+            padding: 4px 12px;
+            border-radius: 6px;
+            color: var(--text-muted);
+        }
+
+        .project-link {
+            width: 60px; height: 60px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .project-link:hover { background: var(--accent); border-color: var(--accent); }
+
+        /* --- Contact --- */
+        .footer-card {
+            background: var(--accent);
+            padding: 4rem;
+            border-radius: 30px;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .footer-card h2 { font-family: 'Syne'; font-size: 3rem; margin-bottom: 1rem; }
+        
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .socials a { color: white; font-size: 1.5rem; transition: 0.3s; }
+        .socials a:hover { opacity: 0.7; }
+
+        /* --- Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hero-text h1 { font-size: 3rem; }
+            .project-card { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">SV<span>.</span></div>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero">
+            <div class="hero-text">
+                <span class="badge">Aspiring Data Scientist</span>
+                <h1>Suyash Verma</h1>
+                <p>Building scalable, data-driven solutions through Machine Learning, Statistical Inference, and Predictive Modeling. Currently pursuing BCA in Data Science & AI at SRM University.</p>
+                <div class="socials" style="justify-content: flex-start;">
+                    <a href="mailto:suyashv560@gmail.com" class="badge" style="text-decoration:none; padding: 12px 24px;">Hire Me <i class="fas fa-arrow-right" style="margin-left:8px"></i></a>
+                </div>
+            </div>
+            <div class="hero-img">
+                <div class="img-card">
+                    <!-- INSERT YOUR PHOTO HERE -->
+                    <img src="image.jpeg" alt="Suyash Verma">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- SKILLS -->
+        <section id="skills" class="reveal">
+            <h2 class="section-title">Technical <span>Toolkit</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>AI & ML</h3>
+                    <ul class="skill-list">
+                        <li>Supervised Learning</li>
+                        <li>Neural Networks</li>
+                        <li>TensorFlow / Keras</li>
+                        <li>Scikit-learn</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Engineering</h3>
+                    <ul class="skill-list">
+                        <li>Python & SQL</li>
+                        <li>Data Cleaning</li>
+                        <li>Power BI & Tableau</li>
+                        <li>OpenCV</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Tools</h3>
+                    <ul class="skill-list">
+                        <li>Git / GitHub</li>
+                        <li>VS Code</li>
+                        <li>Jupyter Notebooks</li>
+                        <li>Anaconda</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="reveal">
+            <h2 class="section-title">Featured <span>Work</span></h2>
+            
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>RAG-based AI Teaching Agent</h3>
+                    <p>A Retrieval-Augmented Generation system providing context-aware answers with 100% source citation.</p>
+                    <div class="project-tags">
+                        <span class="tag">LLM</span>
+                        <span class="tag">Vector DB</span>
+                        <span class="tag">Python</span>
+                    </div>
+                </div>
+                <a href="https://github.com/suyashverma0" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>IPL Data Analytics</h3>
+                    <p>Statistical inference and 15+ visualizations to quantify player impact and team win-probabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">Pandas</span>
+                        <span class="tag">Seaborn</span>
+                        <span class="tag">Statistics</span>
+                    </div>
+                </div>
+                <a href="https://github.com/suyashverma0" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="project-card">
+                <div class="project-info">
+                    <h3>Garbage Detection System</h3>
+                    <p>Real-time ML pipeline achieving high accuracy in waste classification using OpenCV.</p>
+                    <div class="project-tags">
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">Scikit-learn</span>
+                        <span class="tag">Computer Vision</span>
+                    </div>
+                </div>
+                <a href="https://github.com/suyashverma0" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="reveal">
+            <div class="footer-card">
+                <h2>Let's Talk Data.</h2>
+                <p>Currently looking for Data Science opportunities and collaborations.</p>
+                <div class="socials">
+                    <a href="https://linkedin.com/in/suyash-verma"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/suyashverma0"><i class="fab fa-github"></i></a>
+                    <a href="mailto:suyashv560@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8;">+91-8009441216</p>
+            </div>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding-bottom: 4rem; color: var(--text-muted); font-size: 0.8rem;">
+        &copy; 2024 Suyash Verma | Designed for Data Science
+    </footer>
+
+    <script>
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+</body>
+</html>
